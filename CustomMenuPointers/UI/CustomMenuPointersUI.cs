@@ -1,5 +1,7 @@
-﻿using BeatSaberMarkupLanguage.Settings;
-using CustomUI.MenuButton;
+﻿using BeatSaberMarkupLanguage;
+using BeatSaberMarkupLanguage.MenuButtons;
+using BeatSaberMarkupLanguage.Settings;
+using BS_Utils.Utilities;
 using UnityEngine;
 
 namespace CustomMenuPointers.UI
@@ -13,21 +15,24 @@ namespace CustomMenuPointers.UI
 
         private void Awake()
         {
-            this.customMenuPointerMenu = new GameObject(nameof(ModMainFlowCoordinator)).AddComponent<ModMainFlowCoordinator>();
+            var menuButton = new MenuButton("Menu Pointers", "Change the pointers seen in the menus!", ShowModFlowCoordinator, true);
+            MenuButtons.instance.RegisterButton(menuButton);
+
+            BSMLSettings.instance.AddSettingsMenu("Menu Pointers", Plugin.AssemblyName + ".UI.Views.SettingsView.bsml", MenuSettings.instance);
         }
 
-        public void AddUIElements()
+        public void AddMenuSettings()
         {
-            // Show the Menu Pointer settings menu button
-            BSMLSettings.instance.AddSettingsMenu(
-                "Menu Pointers",
-                Plugin.AssemblyName + ".UI.Views.SettingsView.bsml",
-                MenuSettings.instance);
+        }
 
-            var menuButton = MenuButtonUI.AddButton("Menu Pointers", "Change the pointers seen in the menus!", () =>
-            {
-                this.customMenuPointerMenu.Present();
-            });
+        public void ShowModFlowCoordinator()
+        {
+            if (this.customMenuPointerMenu == null)
+                this.customMenuPointerMenu = BeatSaberUI.CreateFlowCoordinator<ModMainFlowCoordinator>();
+
+            if (this.customMenuPointerMenu.IsBusy) return;
+
+            BeatSaberUI.MainFlowCoordinator.InvokeMethod("PresentFlowCoordinator", customMenuPointerMenu, null, false, false);
         }
     }
 }

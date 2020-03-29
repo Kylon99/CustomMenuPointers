@@ -1,5 +1,5 @@
-﻿using IPA.Loader;
-using System.Reflection;
+﻿using CustomSaber.Settings;
+using IPA.Loader;
 using UnityEngine;
 
 namespace CustomMenuPointers
@@ -8,7 +8,7 @@ namespace CustomMenuPointers
     {
 
         public bool IsLoaded { get; private set; }
-        public string CurrentSaberName => CustomSaber.Plugin._currentSaberName;
+        public string CurrentSaberName => Configuration.CurrentlySelectedSaber;
 
 
         private void Awake()
@@ -19,8 +19,8 @@ namespace CustomMenuPointers
         public bool IsUsingDefaultSabers()
         {
             return !IsLoaded ||
-                CustomSaber.Plugin._currentSaberName == null ||
-                CustomSaber.Plugin._currentSaberName == "Default Sabers";
+                this.CurrentSaberName == null ||
+                this.CurrentSaberName == "Default Sabers";
         }
 
         public AssetBundle GetCurrentDefaultSaberAssetBundle()
@@ -28,11 +28,9 @@ namespace CustomMenuPointers
             if (!IsLoaded) return null;
 
             // Get the Custom Saber AssetBundle
-            var assembly = Assembly.GetAssembly(typeof(CustomSaber.CustomTrail));
-            var type = assembly.GetType("CustomSaber.SaberLoader");
-            MethodInfo getSaberAssetBundle = type.GetMethod("GetSaberAssetBundle", BindingFlags.Static | BindingFlags.Public);
-            object assetBundleObj = getSaberAssetBundle.Invoke(null, new[] { CustomSaber.Plugin._currentSaberName });
-            return assetBundleObj as AssetBundle;
+            int index = CustomSaber.Utilities.SaberAssetLoader.SelectedSaber;
+            var currentSaberData = CustomSaber.Utilities.SaberAssetLoader.CustomSabers[index];
+            return currentSaberData.AssetBundle;
         }
 
         /// <summary>

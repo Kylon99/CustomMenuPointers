@@ -87,7 +87,7 @@ namespace CustomMenuPointers
 
             this.UnloadEverything();
 
-            Logger.Info($"Current Custom Saber: {CustomSaber.Plugin._currentSaberName}");
+            Logger.Info($"Current Custom Saber: {CustomSabersMod.instance.CurrentSaberName}");
 
             // Load the asset bundle objects
             var loadedSaberAssetBundle = CustomSabersMod.instance.GetCurrentDefaultSaberAssetBundle();

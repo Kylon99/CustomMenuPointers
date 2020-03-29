@@ -12,9 +12,6 @@ namespace CustomMenuPointers
         public const string MenuCore = "MenuCore";
         public const string StandardGameplay = "StandardGameplay";
 
-        public string Name => AssemblyName;
-        public string Version => "0.1";
-
         private CustomMenuPointersUI customMenuPointersUI;
 
         public void OnActiveSceneChanged(Scene prevScene, Scene nextScene)
@@ -27,11 +24,6 @@ namespace CustomMenuPointers
             if (nextScene.name == MenuCore)
             {
                 CustomMenuPointers.instance.ShowMenuPointers(true);
-                if (this.customMenuPointersUI == null)
-                {
-                    this.customMenuPointersUI = new GameObject(nameof(CustomMenuPointersUI)).AddComponent<CustomMenuPointersUI>();
-                    this.customMenuPointersUI.AddUIElements();
-                }
             }
         }
 
@@ -44,6 +36,8 @@ namespace CustomMenuPointers
             PersistentSingleton<CustomSabersMod>.TouchInstance();
             PersistentSingleton<ConfigOptions>.TouchInstance();
             PersistentSingleton<CustomMenuPointers>.TouchInstance();
+
+            if (this.customMenuPointersUI == null) this.customMenuPointersUI = new GameObject(nameof(CustomMenuPointersUI)).AddComponent<CustomMenuPointersUI>();
         }
 
         public void OnFixedUpdate()

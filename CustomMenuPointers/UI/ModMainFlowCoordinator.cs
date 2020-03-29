@@ -1,8 +1,5 @@
 ﻿using BeatSaberMarkupLanguage;
-using BS_Utils.Utilities;
-using System.Linq;
-using UnityEngine;
-using VRUI;
+using HMUI;
 
 namespace CustomMenuPointers.UI
 {
@@ -11,36 +8,31 @@ namespace CustomMenuPointers.UI
     /// </summary>
     public class ModMainFlowCoordinator : FlowCoordinator
     {
-        private DismissableNavigationController dismissableNavController;
+        private SelectionListViewController selectionListViewController;
+        public bool IsBusy { get; set; }
 
-        public void Present()
+        private void Awake()
         {
-            var mainFlowCoordinator = Resources.FindObjectsOfTypeAll<MainFlowCoordinator>().First();
-            mainFlowCoordinator.InvokeMethod("PresentFlowCoordinator", new object[] { this, null, false, false });
+            selectionListViewController = BeatSaberUI.CreateViewController<SelectionListViewController>();
         }
 
         protected override void DidActivate(bool firstActivation, ActivationType activationType)
         {
-            if (firstActivation && activationType == ActivationType.AddedToHierarchy)
+            if (firstActivation)
             {
                 this.title = "Custom Menu Pointers";
-
-                // Create and assign our view controllers
-                var selectionListViewController = BeatSaberUI.CreateViewController<SelectionListViewController>();
-
-                this.dismissableNavController = Instantiate(Resources.FindObjectsOfTypeAll<DismissableNavigationController>().First());
-                this.dismissableNavController.didFinishEvent += this.Dismiss;
-
-                this.SetViewControllerToNavigationConctroller(this.dismissableNavController, selectionListViewController);
-                this.ProvideInitialViewControllers(this.dismissableNavController);
+                showBackButton = true;
             }
+
+            IsBusy = true;
+            this.ProvideInitialViewControllers(selectionListViewController);
+            IsBusy = false;
         }
 
-        private void Dismiss(DismissableNavigationController navController)
+        protected override void BackButtonWasPressed(ViewController topViewController)
         {
-            var mainFlowCoordinator = Resources.FindObjectsOfTypeAll<MainFlowCoordinator>().First();
-            (mainFlowCoordinator as FlowCoordinator).InvokeMethod("DismissFlowCoordinator", new object[] { this, null, false });
+            if (IsBusy) return;
+            BeatSaberUI.MainFlowCoordinator.DismissFlowCoordinator(this);
         }
-
     }
 }

@@ -1,7 +1,7 @@
 ﻿using BeatSaberMarkupLanguage.Attributes;
 using BeatSaberMarkupLanguage.Components;
 using BeatSaberMarkupLanguage.ViewControllers;
-using CustomUI.Utilities;
+using BS_Utils.Utilities;
 using HMUI;
 using static BeatSaberMarkupLanguage.Components.CustomListTableData;
 
