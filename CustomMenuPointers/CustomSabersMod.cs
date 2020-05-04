@@ -4,6 +4,10 @@ using UnityEngine;
 
 namespace CustomMenuPointers
 {
+    /// <summary>
+    /// This class represents the interface to the Custom Saber MOD.  The MOD may not be available 
+    /// in which case no methods will function properly and IsLoaded will report false.
+    /// </summary>
     public class CustomSabersMod : PersistentSingleton<CustomSabersMod>
     {
 
@@ -23,14 +27,14 @@ namespace CustomMenuPointers
                 this.CurrentSaberName == "Default Sabers";
         }
 
-        public AssetBundle GetCurrentDefaultSaberAssetBundle()
+        public GameObject GetCurrentDefaultSabers()
         {
             if (!IsLoaded) return null;
 
-            // Get the Custom Saber AssetBundle
+            // Return the sabers directly from the currently selected Custom Saber
             int index = CustomSaber.Utilities.SaberAssetLoader.SelectedSaber;
             var currentSaberData = CustomSaber.Utilities.SaberAssetLoader.CustomSabers[index];
-            return currentSaberData.AssetBundle;
+            return currentSaberData.Sabers;
         }
 
         /// <summary>
@@ -38,18 +42,15 @@ namespace CustomMenuPointers
         /// </summary>
         /// <remarks>
         /// This only needs to be called once on start as mods are not currently dynamically
-        /// loaded or unloaded</remarks>
+        /// loaded or unloaded
+        /// </remarks>
         /// <returns>True if the CustomSabers mod is loaded.  False otherwise</returns>
         private bool IsCustomSabersLoaded()
         {
-            var stackTrace = new System.Diagnostics.StackTrace();
-
             var pluginInfo = PluginManager.GetPlugin("Custom Sabers");
             if (pluginInfo == null) return false;
 
-            if (pluginInfo.Metadata != null) return PluginManager.IsEnabled(pluginInfo.Metadata);
-
-            return false;
+            return PluginManager.IsEnabled(pluginInfo);
         }
     }
 }

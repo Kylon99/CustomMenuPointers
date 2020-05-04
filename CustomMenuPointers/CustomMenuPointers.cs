@@ -32,6 +32,7 @@ namespace CustomMenuPointers
 
                 case PointerType.Custom:
                     // Use a custom menu pointer
+                    // Do nothing for now as it's not implemented
                     Logger.Info($"Using a custom menu pointer");
                     return;
             }
@@ -79,6 +80,9 @@ namespace CustomMenuPointers
         /// StandardGameplay scene when playing the game (for the pause menu)</param>
         public void ReplaceWithCustomSabersForScene(bool showMenuCore = true)
         {
+            const string MenuCore = "MenuCore";
+            const string StandardGameplay = "StandardGameplay";
+
             if (CustomSabersMod.instance.IsUsingDefaultSabers())
             {
                 this.UseDefaultPointers();
@@ -89,9 +93,8 @@ namespace CustomMenuPointers
 
             Logger.Info($"Current Custom Saber: {CustomSabersMod.instance.CurrentSaberName}");
 
-            // Load the asset bundle objects
-            var loadedSaberAssetBundle = CustomSabersMod.instance.GetCurrentDefaultSaberAssetBundle();
-            var loadedSaberRoot = loadedSaberAssetBundle.LoadAsset<GameObject>("_customsaber");
+            // Get the sabers from the Custom Saber mod
+            var loadedSaberRoot = CustomSabersMod.instance.GetCurrentDefaultSabers();
             if (loadedSaberRoot == null)
             {
                 Logger.Error($"No _customsaber asset in the bundle from path: {CustomSabersMod.instance.CurrentSaberName}");
@@ -112,8 +115,7 @@ namespace CustomMenuPointers
             var rightControllers = allControllers.Where(c => c.name == "ControllerRight").ToList();
 
             // Choose which VRControllers to hook up to
-            string sceneName = showMenuCore ? Plugin.MenuCore : Plugin.StandardGameplay;
-
+            string sceneName = showMenuCore ? MenuCore : StandardGameplay;
             leftControllers.ForEach(c =>
             {
                 if (c.gameObject.scene.name == sceneName)

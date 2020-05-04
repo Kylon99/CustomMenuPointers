@@ -17,6 +17,9 @@ Drop the CustomMenuPointers.dll file into your Plugins folder under your BeatSab
 
 ## Changelog
 
+### 0.2.0
+* Updated to support Beat Saber 1.9.0 and the new BSIPA4
+
 ### 0.1.1
 * Updated to support Beat Saber 1.7.0
 * Updated to support Custom Sabers 4.0.1

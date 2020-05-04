@@ -1,60 +1,43 @@
-﻿using CustomMenuPointers.UI;
+﻿using BS_Utils.Utilities;
+using CustomMenuPointers.UI;
 using IPA;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace CustomMenuPointers
 {
-    public class Plugin : IBeatSaberPlugin
+    [Plugin(RuntimeOptions.SingleStartInit)]
+    public class Plugin
     {
         public const string AssemblyName = "CustomMenuPointers";
-        public const string GameCore = "GameCore";
-        public const string MenuCore = "MenuCore";
-        public const string StandardGameplay = "StandardGameplay";
-
         private CustomMenuPointersUI customMenuPointersUI;
 
-        public void OnActiveSceneChanged(Scene prevScene, Scene nextScene)
-        {
-            if (nextScene.name == GameCore)
-            {
-                CustomMenuPointers.instance.ShowMenuPointers(false);
-            }
-
-            if (nextScene.name == MenuCore)
-            {
-                CustomMenuPointers.instance.ShowMenuPointers(true);
-            }
-        }
-
-        public void OnApplicationQuit()
-        {
-        }
-
-        public void OnApplicationStart()
+        [OnStart]
+        public void OnStart()
         {
             PersistentSingleton<CustomSabersMod>.TouchInstance();
             PersistentSingleton<ConfigOptions>.TouchInstance();
             PersistentSingleton<CustomMenuPointers>.TouchInstance();
 
             if (this.customMenuPointersUI == null) this.customMenuPointersUI = new GameObject(nameof(CustomMenuPointersUI)).AddComponent<CustomMenuPointersUI>();
+
+            BSEvents.menuSceneLoadedFresh += this.OnMenuSceneLoadedFresh;
+            BSEvents.menuSceneLoaded += this.OnMenuSceneLoaded;
+            BSEvents.gameSceneLoaded += this.OnGameSceneLoaded;
         }
 
-        public void OnFixedUpdate()
+        private void OnMenuSceneLoadedFresh()
         {
+            CustomMenuPointers.instance.ShowMenuPointers();
         }
 
-        public void OnSceneLoaded(Scene scene, LoadSceneMode sceneMode)
+        private void OnMenuSceneLoaded()
         {
+            CustomMenuPointers.instance.ShowMenuPointers();
         }
 
-        public void OnSceneUnloaded(Scene scene)
+        private void OnGameSceneLoaded()
         {
+            CustomMenuPointers.instance.ShowMenuPointers(false);
         }
-
-        public void OnUpdate()
-        {
-        }
-
     }
 }
