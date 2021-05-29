@@ -29,7 +29,8 @@ Drop the CustomMenuPointers.dll file into your Plugins folder under your BeatSab
 * Supports using Custom Sabers as the Menu Pointer
 
 ## Author
-* Kylon99 - Main modder
+* Kylon99 - Initial main modder and creator of the mod - Thank you!
+* Raine Aya (DawnVT) - New maintainer of the mod
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
