@@ -1,0 +1,16 @@
+﻿{
+  "$schema": "https://raw.githubusercontent.com/bsmg/BSIPA-MetadataFileSchema/master/Schema.json",
+  "id": "CustomMenuPointers",
+  "name": "CustomMenuPointers",
+  "author": "Raine Aya",
+  "version": "0.3.0",
+  "description": "This mod allows you to use saber and eventually menupointer files in the menu!",
+  "gameVersion": "1.16.1",
+  "dependsOn": {
+    "BSIPA": "^4.1.6",
+    "BeatSaberMarkupLanguage": "^1.5.3",
+    "SiraUtil": "^2.5.5",
+    "SaberFactory":  "^2.3.0" 
+  },
+  "features": []
+}
