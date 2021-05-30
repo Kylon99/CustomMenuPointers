@@ -2,6 +2,7 @@
 using BeatSaberMarkupLanguage.MenuButtons;
 using System;
 using CustomMenuPointers.FlowCoordinators;
+using HMUI;
 using Zenject;
 
 namespace CustomMenuPointers.UI
@@ -12,7 +13,7 @@ namespace CustomMenuPointers.UI
             private readonly MainFlowCoordinator _mainFlowCoordinator;
             private readonly UIFlowCoordinator _uiFlowCoordinator;
 
-            public MenuButtonUI(MainFlowCoordinator mainFlowCoordinator, UIFlowCoordinator uiFlowCoordinator)
+            public MenuButtonUI(MainFlowCoordinator mainFlowCoordinator, FlowCoordinator uiFlowCoordinator)
             {
                 _menuButton = new MenuButton("Menu Pointers!", "Custom Menu Pointers for the world!", MenuButtonClicked, true);
                 _mainFlowCoordinator = mainFlowCoordinator;
@@ -34,7 +35,7 @@ namespace CustomMenuPointers.UI
 
             private void MenuButtonClicked()
             {
-                _mainFlowCoordinator.PresentFlowCoordinator(_mainFlowCoordinator);
+                _mainFlowCoordinator.PresentFlowCoordinator(_uiFlowCoordinator);
             }
         }
     }
