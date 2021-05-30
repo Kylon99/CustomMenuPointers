@@ -13,6 +13,7 @@ namespace CustomMenuPointers.Installer
         {
             Container.Bind<CustomMenuPointersController>().FromNewComponentAsViewController().AsSingle();
             Container.Bind<UIFlowCoordinator>().FromNewComponentOnNewGameObject().AsSingle();
+            Container.Bind<MenuPointerSelectView>().FromNewComponentAsViewController().AsSingle();
             Container.BindInterfacesTo<MenuButtonUI>().AsSingle();
         }
     }

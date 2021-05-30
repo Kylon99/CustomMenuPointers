@@ -13,7 +13,7 @@ namespace CustomMenuPointers.UI
             private readonly MainFlowCoordinator _mainFlowCoordinator;
             private readonly UIFlowCoordinator _uiFlowCoordinator;
 
-            public MenuButtonUI(MainFlowCoordinator mainFlowCoordinator, FlowCoordinator uiFlowCoordinator)
+            public MenuButtonUI(MainFlowCoordinator mainFlowCoordinator, UIFlowCoordinator uiFlowCoordinator)
             {
                 _menuButton = new MenuButton("Menu Pointers!", "Custom Menu Pointers for the world!", MenuButtonClicked, true);
                 _mainFlowCoordinator = mainFlowCoordinator;
