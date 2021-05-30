@@ -20,7 +20,7 @@ Drop the CustomMenuPointers.dll file into your Plugins folder under your BeatSab
 ### 0.3.0
 * Updated for 1.16.1
 * Added support for Saber Factory
-* Removed supoprt for Custom Saber (Sorry folks, SF has better support from its creator!)
+* Removed support for Custom Saber (Sorry folks, SF has better support from its creator!)
 * Full rewrite from BS_Utils to SiraUtil (Thanks @rithik-b and @PulseLane for your help with Sira conversion!)
 
 ### 0.2.0
