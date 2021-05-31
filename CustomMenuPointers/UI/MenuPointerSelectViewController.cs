@@ -9,12 +9,6 @@ namespace CustomMenuPointers.UI
     [HotReload(RelativePathToLayout = @"..\UI\MenuPointerSelectView.bsml")]
     public class MenuPointerSelectView : BSMLAutomaticViewController
     {
-        [UIComponent("text")] private TextMeshProUGUI text;
-
-        [UIAction("press")]
-        private void ButtonPress()
-        {
-            text.text = "Oh shit, this text changed!";
-        }
+        
     }
 }

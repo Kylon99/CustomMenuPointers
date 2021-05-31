@@ -10,12 +10,15 @@ namespace CustomMenuPointers.FlowCoordinators
     {
         private MainFlowCoordinator _mainFlowCoordinator;
         private MenuPointerSelectView _menuPointerSelectView;
+        private CMPSettingsView _cmpSettingsView;
 
         [Inject]
-        public void Construct(MainFlowCoordinator mainFlowCoordinator, MenuPointerSelectView menuPointerSelectView)
+        public void Construct(MainFlowCoordinator mainFlowCoordinator, MenuPointerSelectView menuPointerSelectView, CMPSettingsView cmpSettingsView)
         {
             _mainFlowCoordinator = mainFlowCoordinator;
             _menuPointerSelectView = menuPointerSelectView;
+            _cmpSettingsView = cmpSettingsView;
+
         }
         
         protected override void DidActivate(bool firstActivation, bool addedToHierarchy, bool screenSystemEnabling)
@@ -24,7 +27,7 @@ namespace CustomMenuPointers.FlowCoordinators
             {
                 SetTitle("Menu Pointers");
                 showBackButton = true;
-                ProvideInitialViewControllers(_menuPointerSelectView);
+                ProvideInitialViewControllers(_menuPointerSelectView, _cmpSettingsView);
             }
         }
 
