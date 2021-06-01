@@ -22,7 +22,5 @@ namespace CustomMenuPointers.UI
         {
             _siraLog = siraLog;
         }
-        
-        [UIAction("reload")]
     }
 }

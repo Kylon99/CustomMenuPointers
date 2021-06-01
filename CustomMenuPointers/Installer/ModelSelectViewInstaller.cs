@@ -1,5 +1,5 @@
-﻿using System;
-using CustomMenuPointers.FlowCoordinators;
+﻿using CustomMenuPointers.FlowCoordinators;
+using CustomMenuPointers.MenuPointers;
 using CustomMenuPointers.UI;
 using Zenject;
 using SiraUtil;
@@ -23,6 +23,7 @@ namespace CustomMenuPointers.Installer
             Container.Bind<UIFlowCoordinator>().FromNewComponentOnNewGameObject().AsSingle();
             Container.Bind<MenuPointerSelectView>().FromNewComponentAsViewController().AsSingle();
             Container.Bind<CMPSettingsView>().FromNewComponentAsViewController().AsSingle();
+            Container.BindInterfacesAndSelfTo<CMPManager>().AsSingle();
             Container.BindInterfacesTo<MenuButtonUI>().AsSingle();
         }
     }

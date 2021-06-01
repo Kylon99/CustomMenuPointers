@@ -13,8 +13,5 @@ namespace CustomMenuPointers.UI
     public class MenuPointerSelectView : BSMLAutomaticViewController
     {
         [UIParams] private BSMLParserParams _parserParams;
-
-        [UIAction("reload-btn-action")]
-        internal void ReloadButtonAction() => 
     }
 }
