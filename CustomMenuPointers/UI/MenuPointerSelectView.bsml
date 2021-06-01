@@ -7,9 +7,9 @@
         </horizontal>
         <page-button event-click='list#PageDown' direction='Down' />
         <horizontal horizontal-fit='PreferredSize' vertical-fit='PreferredSize' spacing='2'>
-            <button text='Reload' event-click='reload' hover-hint='Reloads the selected model' pad='2' pad-top='3' />
-            <button text='Reload All' event-click='reload-all' hover-hint='Reloads all models' pad='2' pad-top='3' />
-            <button text='Delete' event-click='delete' hover-hint='This deletes a model!' pad='2' pad-top='3' />
+            <button text='Reload' on-click='reload-btn-action' hover-hint='Reloads the selected model' pad='2' pad-top='3' />
+            <button text='Reload All' on-click='reload-all' hover-hint='Reloads all models' pad='2' pad-top='3' />
+            <button text='Delete' on-click='delete' hover-hint='This deletes a model!' pad='2' pad-top='3' />
         </horizontal>
     </vertical>
 </bg>

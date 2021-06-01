@@ -2,7 +2,9 @@
 using BeatSaberMarkupLanguage;
 using CustomMenuPointers.UI;
 using HMUI;
+using SiraUtil.Tools;
 using Zenject;
+using SiraUtil.Tools;
 
 namespace CustomMenuPointers.FlowCoordinators
 {
@@ -11,14 +13,15 @@ namespace CustomMenuPointers.FlowCoordinators
         private MainFlowCoordinator _mainFlowCoordinator;
         private MenuPointerSelectView _menuPointerSelectView;
         private CMPSettingsView _cmpSettingsView;
+        private SiraLog _siraLog;
 
         [Inject]
-        public void Construct(MainFlowCoordinator mainFlowCoordinator, MenuPointerSelectView menuPointerSelectView, CMPSettingsView cmpSettingsView)
+        public void Construct(MainFlowCoordinator mainFlowCoordinator, MenuPointerSelectView menuPointerSelectView, CMPSettingsView cmpSettingsView, SiraLog siraLog)
         {
             _mainFlowCoordinator = mainFlowCoordinator;
             _menuPointerSelectView = menuPointerSelectView;
             _cmpSettingsView = cmpSettingsView;
-
+            _siraLog = siraLog;
         }
         
         protected override void DidActivate(bool firstActivation, bool addedToHierarchy, bool screenSystemEnabling)

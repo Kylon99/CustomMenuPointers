@@ -29,8 +29,7 @@ namespace CustomMenuPointers
         public void Init(IPALogger logger, Zenjector zenjector)
         {
             Instance = this;
-            Plugin.Log = logger;
-            Plugin.Log?.Debug("CustomMenuPointers Initialized");
+            zenjector.OnApp<MenuPointerSelectViewInstaller>().WithParameters(logger);
             zenjector.OnMenu<ModelSelectViewInstaller>();
         }
 
