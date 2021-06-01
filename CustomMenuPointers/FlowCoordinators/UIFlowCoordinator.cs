@@ -26,12 +26,20 @@ namespace CustomMenuPointers.FlowCoordinators
         
         protected override void DidActivate(bool firstActivation, bool addedToHierarchy, bool screenSystemEnabling)
         {
-            if (firstActivation)
+            try
             {
-                SetTitle("Menu Pointers");
-                showBackButton = true;
-                ProvideInitialViewControllers(_menuPointerSelectView, _cmpSettingsView);
+                if (firstActivation)
+                {
+                    SetTitle("Menu Pointers");
+                    showBackButton = true;
+                    ProvideInitialViewControllers(_menuPointerSelectView, _cmpSettingsView);
+                }
             }
+            catch (Exception ex)
+            {
+                _siraLog.Error(ex);
+            }
+            
         }
 
         protected override void BackButtonWasPressed(ViewController topViewController)

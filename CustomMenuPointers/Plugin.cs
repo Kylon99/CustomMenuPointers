@@ -29,8 +29,7 @@ namespace CustomMenuPointers
         public void Init(IPALogger logger, Zenjector zenjector)
         {
             Instance = this;
-            zenjector.OnApp<MenuPointerSelectViewInstaller>().WithParameters(logger);
-            zenjector.OnMenu<ModelSelectViewInstaller>();
+            zenjector.OnMenu<ModelSelectViewInstaller>().WithParameters(logger);
         }
 
         #region BSIPA Config

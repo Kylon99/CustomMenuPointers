@@ -8,10 +8,14 @@ using IPA.Logging;
 
 namespace CustomMenuPointers.Installer
 {
-    public class ModelSelectViewInstaller : Installer<Logger, Installer>
+    internal class ModelSelectViewInstaller : Installer<Logger, ModelSelectViewInstaller>
     {
         private readonly Logger _logger;
-        
+        internal ModelSelectViewInstaller(Logger logger)
+        {
+            _logger = logger;
+        }
+
         public override void InstallBindings()
         {
             Container.BindLoggerAsSiraLogger(_logger);
