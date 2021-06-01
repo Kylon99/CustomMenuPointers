@@ -1,16 +1,7 @@
 ﻿using IPA;
-using IPA.Config;
-using IPA.Config.Stores;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using CustomMenuPointers.Installer;
-using CustomMenuPointers.MenuPointers;
-using CustomMenuPointers.UI;
 using SiraUtil.Zenject;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using IPALogger = IPA.Logging.Logger;
 
 namespace CustomMenuPointers

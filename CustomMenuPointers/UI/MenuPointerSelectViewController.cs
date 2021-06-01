@@ -1,10 +1,5 @@
-﻿using HMUI;
-using BeatSaberMarkupLanguage.Attributes;
-using BeatSaberMarkupLanguage.Parser;
+﻿using BeatSaberMarkupLanguage.Attributes;
 using BeatSaberMarkupLanguage.ViewControllers;
-using IPA.Logging;
-using SiraUtil.Tools;
-using TMPro;
 
 namespace CustomMenuPointers.UI
 {

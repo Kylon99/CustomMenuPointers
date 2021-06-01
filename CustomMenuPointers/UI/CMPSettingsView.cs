@@ -1,11 +1,6 @@
-﻿using System;
-using SiraUtil.Tools;
-using BeatSaberMarkupLanguage;
+﻿using SiraUtil.Tools;
 using BeatSaberMarkupLanguage.Attributes;
-using BeatSaberMarkupLanguage.Parser;
 using BeatSaberMarkupLanguage.ViewControllers;
-using CustomMenuPointers.FlowCoordinators;
-using TMPro;
 using Zenject;
 
 namespace CustomMenuPointers.UI
@@ -21,5 +16,12 @@ namespace CustomMenuPointers.UI
         {
             _siraLog = siraLog;
         }
+
+        [UIValue("Toggle CMP")]
+        private bool togglePointers = true;
+
+        [UIValue("SFPointer")]
+        private bool sfPointers = true;
+
     }
 }
