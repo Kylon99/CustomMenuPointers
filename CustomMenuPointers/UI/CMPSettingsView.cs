@@ -6,7 +6,6 @@ using BeatSaberMarkupLanguage.Parser;
 using BeatSaberMarkupLanguage.ViewControllers;
 using CustomMenuPointers.FlowCoordinators;
 using TMPro;
-using SiraUtil.Tools;
 using Zenject;
 
 namespace CustomMenuPointers.UI

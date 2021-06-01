@@ -12,6 +12,6 @@ namespace CustomMenuPointers.UI
     [HotReload(RelativePathToLayout = @"..\UI\MenuPointerSelectView.bsml")]
     public class MenuPointerSelectView : BSMLAutomaticViewController
     {
-        [UIParams] private BSMLParserParams _parserParams;
+        
     }
 }

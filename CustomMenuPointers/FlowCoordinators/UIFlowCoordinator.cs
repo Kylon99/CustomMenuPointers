@@ -4,7 +4,6 @@ using CustomMenuPointers.UI;
 using HMUI;
 using SiraUtil.Tools;
 using Zenject;
-using SiraUtil.Tools;
 
 namespace CustomMenuPointers.FlowCoordinators
 {
