@@ -13,7 +13,7 @@ namespace CustomMenuPointers.UI
 {
     [ViewDefinition("CustomMenuPointers.UI.CMPSettingsView.bsml")]
     [HotReload(RelativePathToLayout = @"..\UI\CMPSettingsView.bsml")]
-    internal class CMPSettingsView : BSMLAutomaticViewController
+    public class CMPSettingsView : BSMLAutomaticViewController
     {
         private SiraLog _siraLog = null;
 
