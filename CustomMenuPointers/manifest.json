@@ -3,7 +3,7 @@
   "id": "CustomMenuPointers",
   "name": "CustomMenuPointers",
   "author": "Raine Aya",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "This mod allows you to use saber and eventually menupointer files in the menu!",
   "gameVersion": "1.16.1",
   "dependsOn": {

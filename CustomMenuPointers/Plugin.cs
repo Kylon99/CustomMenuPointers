@@ -1,7 +1,7 @@
-﻿using CustomMenuPointers.Configuration;
+﻿using System.Reflection;
+using CustomMenuPointers.Configuration;
 using IPA;
 using CustomMenuPointers.Installer;
-using IPA.Config;
 using SiraUtil.Zenject;
 using UnityEngine;
 using IPALogger = IPA.Logging.Logger;
@@ -15,7 +15,7 @@ namespace CustomMenuPointers
     {
         internal static Plugin Instance { get; private set; }
         internal static IPALogger Log { get; private set; }
-
+        
         [Init]
         /// <summary>
         /// Called when the plugin is first loaded by IPA (either when the game starts or when the plugin is enabled if it starts disabled).
@@ -46,7 +46,6 @@ namespace CustomMenuPointers
         {
             Log.Debug("OnApplicationStart");
             new GameObject("CustomMenuPointersController").AddComponent<CustomMenuPointersController>();
-
         }
 
         [OnExit]

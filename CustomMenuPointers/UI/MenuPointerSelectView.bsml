@@ -1,4 +1,4 @@
-<bg xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='https://monkeymanboy.github.io/BSML-Docs/ https://raw.githubusercontent.com/monkeymanboy/BSML-Docs/gh-pages/BSMLSchema.xsd'>
+<!--<bg xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='https://monkeymanboy.github.io/BSML-Docs/ https://raw.githubusercontent.com/monkeymanboy/BSML-Docs/gh-pages/BSMLSchema.xsd'>
     <vertical background='round-rect-panel'>
         <horizontal pref-height='2'/>
         <page-button event-click='list#PageUp' direction='Up' />
@@ -12,4 +12,4 @@
             <button text='Delete' on-click='delete' hover-hint='This deletes a model!' pad='2' pad-top='3' />
         </horizontal>
     </vertical>
-</bg>
+</bg>-->
