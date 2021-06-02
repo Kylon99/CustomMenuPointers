@@ -1,8 +1,8 @@
 ﻿<bg xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='https://monkeymanboy.github.io/BSML-Docs/ https://raw.githubusercontent.com/monkeymanboy/BSML-Docs/gh-pages/BSMLSchema.xsd'>
     <vertical horizontal-fit='PreferredSize' vertical-fit='PreferredSize' background='round-rect-panel' pad='2'>
-        <checkbox text='Toggle CMP' value='Toggle CMP' pad='5' bind-value='true' apply-on-change='true' />
-        <checkbox text='Use SF Saber as Pointer' value='SFPointer' pad='5' />
-        <slider-setting text='Pointer Thickness' />
-        <!--<horizontal horizontal-fit='PreferredSize' vertical-fit='PreferredSize' spacing='2' />-->
+        <checkbox text='Toggle CMP' value='toggle-cmp' pad='5' bind-value='true' apply-on-change='true' />
+        <checkbox text='Use SF Saber as Pointer' value='sf-pointer' pad='5' />
+        <!--<slider-setting text='Pointer Thickness' />
+        <horizontal horizontal-fit='PreferredSize' vertical-fit='PreferredSize' spacing='2' />-->
     </vertical>
 </bg>

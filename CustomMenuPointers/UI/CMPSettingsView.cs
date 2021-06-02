@@ -1,6 +1,8 @@
 ﻿using SiraUtil.Tools;
 using BeatSaberMarkupLanguage.Attributes;
 using BeatSaberMarkupLanguage.ViewControllers;
+using CustomMenuPointers.Configuration;
+using IPA.Config.Data;
 using Zenject;
 
 namespace CustomMenuPointers.UI
@@ -17,11 +19,18 @@ namespace CustomMenuPointers.UI
             _siraLog = siraLog;
         }
 
-        [UIValue("Toggle CMP")]
-        private bool togglePointers = true;
+        [UIValue("toggle-cmp")]
+        private bool toggleCMP
+        {
+            get => PluginConfig.Instance.toggleCMP;
+            set => PluginConfig.Instance.toggleCMP = value;
+        }
 
-        [UIValue("SFPointer")]
-        private bool sfPointers = true;
-
+        [UIValue("sf-pointer")]
+        private bool sfPointers
+        {
+            get => PluginConfig.Instance.sfPointer;
+            set => PluginConfig.Instance.sfPointer = value;
+        }
     }
 }

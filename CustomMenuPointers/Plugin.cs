@@ -1,8 +1,12 @@
-﻿using IPA;
+﻿using CustomMenuPointers.Configuration;
+using IPA;
 using CustomMenuPointers.Installer;
+using IPA.Config;
 using SiraUtil.Zenject;
 using UnityEngine;
 using IPALogger = IPA.Logging.Logger;
+using IPA.Config.Stores;
+using Config = IPA.Config.Config;
 
 namespace CustomMenuPointers
 {
@@ -18,10 +22,11 @@ namespace CustomMenuPointers
         /// [Init] methods that use a Constructor or called before regular methods like InitWithConfig.
         /// Only use [Init] with one Constructor.
         /// </summary>
-        public void Init(IPALogger logger, Zenjector zenjector)
+        public void Init(IPALogger logger, Zenjector zenjector, Config config)
         {
             Instance = this;
             zenjector.OnMenu<ModelSelectViewInstaller>().WithParameters(logger);
+            PluginConfig.Instance = config.Generated<PluginConfig>();
         }
 
         #region BSIPA Config
