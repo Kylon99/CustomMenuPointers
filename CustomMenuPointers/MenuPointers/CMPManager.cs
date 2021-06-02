@@ -28,12 +28,8 @@ namespace CustomMenuPointers.MenuPointers
             // Create a left saber with whatever your left user color is
             var leftSaber = await CreateSaberColorScheme(SaberType.SaberA);
 
-            leftSaber.transform.position = new Vector3(-1, 0, 0);
-
             //_ = CreateSaberCustomColor(new Color(0, 0, 1), SaberType.SaberB);
             var rightSaber = await CreateSaberColorScheme(SaberType.SaberB);
-
-            rightSaber.transform.localPosition = new Vector3(1, 0, 0);
         }
 
         /// <summary>
@@ -41,7 +37,7 @@ namespace CustomMenuPointers.MenuPointers
         /// </summary>
         public async Task<GameObject> CreateSaberCustomColor(Color color, SaberType saberType)
         {
-            return await _menuSaberProvider.CreateSaber(parent: null, saberType: saberType, color: new Color(1, 0, 0), createTrail: true);
+            return await _menuSaberProvider.CreateSaber(parent: _menuPlayerController.leftController.transform, saberType: saberType, color: new Color(1, 0, 0), createTrail: true);
         }
 
         /// <summary>
@@ -53,8 +49,11 @@ namespace CustomMenuPointers.MenuPointers
         {
             var colorScheme = _playerDataModel.playerData.colorSchemesSettings.GetSelectedColorScheme();
             var color = saberType == SaberType.SaberA ? colorScheme.saberAColor : colorScheme.saberBColor;
-
-            return await _menuSaberProvider.CreateSaber(parent: null, saberType: saberType, color: color, createTrail: true);
+            
+            _menuPlayerController.gameObject.GetComponentsInChildren<>()
+            return await _menuSaberProvider.CreateSaber(parent: _menuPlayerController.rightController.transform, saberType: saberType, color: color, createTrail: true);
+            
+            
         }
     }
 }
