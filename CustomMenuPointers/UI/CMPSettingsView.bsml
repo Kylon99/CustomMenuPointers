@@ -3,6 +3,8 @@
         <checkbox text='Toggle CMP' value='toggle-cmp' pad='5' bind-value='true' apply-on-change='true' />
         <checkbox text='Use SF Saber as Pointer' value='sf-pointer' pad='5' />
         <!--<slider-setting text='Pointer Thickness' />
-        <horizontal horizontal-fit='PreferredSize' vertical-fit='PreferredSize' spacing='2' />-->
+        <horizontal horizontal-fit='PreferredSize' vertical-fit='PreferredSize' spacing='2' /> -->
+        <text text='This is not the final UI.' />
+        <text text='This UI will change when CustomMenuPointers\u00a start supporting Menu Pointer files.' />
     </vertical>
 </bg>
