@@ -1,13 +1,15 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using CustomMenuPointers.Configuration;
 using SaberFactory;
+using SaberFactory.Instances;
 using UnityEngine;
 using Zenject;
 using Object = UnityEngine.Object;
 
 namespace CustomMenuPointers.Managers
 {
-    internal class CMPManager : IInitializable
+    internal class CMPManager : IInitializable, IDisposable
     {
         // Fields for injection
         
@@ -16,8 +18,8 @@ namespace CustomMenuPointers.Managers
         private readonly MenuPlayerController _menuPlayerController;
         private readonly PluginConfig _config;
         private ColorScheme _colorScheme;
-        private GameObject _leftSaber;
-        private GameObject _rightSaber;
+        private SaberInstance _leftSaber;
+        private SaberInstance _rightSaber;
 
         public CMPManager(
             MenuSaberProvider menuSaberProvider,
@@ -33,23 +35,25 @@ namespace CustomMenuPointers.Managers
 
         public async void Initialize()
         {
+            _menuSaberProvider.OnSaberVisibilityRequested += OnSaberVisibilityRequested;
             _colorScheme = _playerDataModel.playerData.colorSchemesSettings.GetSelectedColorScheme();
             await ToggleCustomMenuPointers(_config.CmpEnabled);
         }
 
         public async Task ToggleCustomMenuPointers(bool toggle)
         {
-            ToggleMeshFilters(!toggle);
+            ToggleHandles(!toggle);
             if (toggle) await CreateSaberColorScheme();
             else DestroySaber();
         }
         
         public async Task CreateSaberColorScheme()
         {
+            if (_leftSaber != null && _rightSaber != null) return;
             _leftSaber = await _menuSaberProvider.CreateSaber(_menuPlayerController.leftController.transform, SaberType.SaberA, _colorScheme.saberAColor, true);
             _rightSaber = await _menuSaberProvider.CreateSaber(_menuPlayerController.rightController.transform, SaberType.SaberB, _colorScheme.saberBColor, true);
-            DestroyCollider(_leftSaber);
-            DestroyCollider(_rightSaber);
+            DestroyCollider(_leftSaber.GameObject);
+            DestroyCollider(_rightSaber.GameObject);
         }
 
         private void DestroyCollider(GameObject gameObject)
@@ -63,27 +67,43 @@ namespace CustomMenuPointers.Managers
         private void DestroySaber()
         {
             if(_leftSaber == null || _rightSaber == null) return;
-            Object.Destroy(_leftSaber);
-            Object.Destroy(_rightSaber);
+            _leftSaber.Destroy();
+            _rightSaber.Destroy();
+            _leftSaber = null;
+            _rightSaber = null;
         }
 
-        private void ToggleMeshFilters(bool toggle)
+        private void ToggleHandles(bool visible)
         {
-            foreach (MeshFilter meshFilter in
-                _menuPlayerController.leftController.GetComponentsInChildren<MeshFilter>())
-            {
-                meshFilter.gameObject.SetActive(toggle);
-            }
-            foreach (MeshFilter meshFilter in _menuPlayerController.rightController.GetComponentsInChildren<MeshFilter>())
-            {
-                meshFilter.gameObject.SetActive(toggle);
-            }
+            ToggleHandle(_menuPlayerController.leftController, visible);
+            ToggleHandle(_menuPlayerController.rightController, visible);
+        }
+
+        private void ToggleHandle(VRController controller, bool visible)
+        {
+            var handle = controller.transform.Find("MenuHandle");
+            if (handle == null) return;
+            handle.gameObject.SetActive(visible);
         }
 
         public async void ReloadModel()
         {
+            if (!_config.CmpEnabled) return;
             DestroySaber();
             await CreateSaberColorScheme();
+        }
+
+        private void OnSaberVisibilityRequested(bool visible)
+        {
+            if (_leftSaber == null && _rightSaber == null) return;
+            _leftSaber?.GameObject.SetActive(visible);
+            _rightSaber?.GameObject.SetActive(visible);
+            ToggleHandles(!visible);
+        }
+
+        public void Dispose()
+        {
+            _menuSaberProvider.OnSaberVisibilityRequested -= OnSaberVisibilityRequested;
         }
     }
 }
