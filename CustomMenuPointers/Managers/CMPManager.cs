@@ -1,41 +1,46 @@
 ﻿using System.Threading.Tasks;
+using CustomMenuPointers.Configuration;
 using SaberFactory;
 using UnityEngine;
 using Zenject;
-using CustomMenuPointers.Configuration;
 using Object = UnityEngine.Object;
-using HarmonyLib;
 
-namespace CustomMenuPointers.MenuPointers
+namespace CustomMenuPointers.Managers
 {
-    public class CMPManager : IInitializable
+    internal class CMPManager : IInitializable
     {
         // Fields for injection
         
         private readonly MenuSaberProvider _menuSaberProvider;
         private readonly PlayerDataModel _playerDataModel;
         private readonly MenuPlayerController _menuPlayerController;
+        private readonly PluginConfig _config;
         private ColorScheme _colorScheme;
         private GameObject _leftSaber;
         private GameObject _rightSaber;
 
-        public CMPManager(MenuSaberProvider menuSaberProvider, PlayerDataModel playerDataModel, MenuPlayerController menuPlayerController)
+        public CMPManager(
+            MenuSaberProvider menuSaberProvider,
+            PlayerDataModel playerDataModel,
+            MenuPlayerController menuPlayerController,
+            PluginConfig config)
         {
             _menuSaberProvider = menuSaberProvider;
             _playerDataModel = playerDataModel;
             _menuPlayerController = menuPlayerController;
+            _config = config;
         }
 
         public async void Initialize()
         {
             _colorScheme = _playerDataModel.playerData.colorSchemesSettings.GetSelectedColorScheme();
-            await ToggleCustomMenuPointers(PluginConfig.Instance.toggleCMP);
+            await ToggleCustomMenuPointers(_config.CmpEnabled);
         }
 
         public async Task ToggleCustomMenuPointers(bool toggle)
         {
             ToggleMeshFilters(!toggle);
-            if (toggle == true) await CreateSaberColorScheme();
+            if (toggle) await CreateSaberColorScheme();
             else DestroySaber();
         }
         
@@ -75,7 +80,7 @@ namespace CustomMenuPointers.MenuPointers
             }
         }
 
-        public async void reloadModel()
+        public async void ReloadModel()
         {
             DestroySaber();
             await CreateSaberColorScheme();

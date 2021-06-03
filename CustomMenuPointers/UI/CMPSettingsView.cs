@@ -2,7 +2,7 @@
 using BeatSaberMarkupLanguage.Attributes;
 using BeatSaberMarkupLanguage.ViewControllers;
 using CustomMenuPointers.Configuration;
-using CustomMenuPointers.MenuPointers;
+using CustomMenuPointers.Managers;
 using CustomMenuPointers.UI;
 using Zenject;
 
@@ -13,37 +13,41 @@ namespace CustomMenuPointers.UI
     public class CMPSettingsView : BSMLAutomaticViewController
     {
         private CMPManager _cmpManager;
-        private SiraLog _siraLog = null;
+        private SiraLog _siraLog;
+        private PluginConfig _config;
 
         [Inject]
-        internal void Construct(SiraLog siraLog, CMPManager cmpManager)
+        internal void Construct(SiraLog siraLog, CMPManager cmpManager, PluginConfig config)
         {
             _siraLog = siraLog;
             _cmpManager = cmpManager;
+            _config = config;
         }
 
-        [UIValue("toggle-cmp")]
-        private bool toggleCMP
+        private async void ToggleCmp(bool enableCmp)
         {
-            get => PluginConfig.Instance.toggleCMP;
-            set
-            {
-                _cmpManager.ToggleCustomMenuPointers(value).GetAwaiter().GetResult();
-                PluginConfig.Instance.toggleCMP = value;
-            }
+            _config.CmpEnabled = enableCmp;
+            await _cmpManager.ToggleCustomMenuPointers(enableCmp);
+        }
+
+        [UIValue("cmp-enabled")]
+        private bool CmpEnabled
+        {
+            get => _config.CmpEnabled;
+            set => ToggleCmp(value);
         }
 
         [UIValue("sf-pointer")]
-        private bool sfPointers
+        private bool UseSfPointer
         {
-            get => PluginConfig.Instance.sfPointer;
-            set => PluginConfig.Instance.sfPointer = value;
+            get => _config.UseSfPointer;
+            set => _config.UseSfPointer = value;
         }
 
         [UIAction("reload")]
         private void Reload()
         {
-            _cmpManager.reloadModel();
+            _cmpManager.ReloadModel();
         }
     }
 }
