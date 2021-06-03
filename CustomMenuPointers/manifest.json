@@ -11,6 +11,5 @@
     "BeatSaberMarkupLanguage": "^1.5.3",
     "SiraUtil": "^2.5.5",
     "SaberFactory":  "^2.3.0" 
-  },
-  "features": []
+  }
 }
