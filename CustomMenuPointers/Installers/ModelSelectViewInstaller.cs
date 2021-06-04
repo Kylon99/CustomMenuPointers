@@ -1,26 +1,28 @@
 ﻿using CustomMenuPointers.Configuration;
 using CustomMenuPointers.FlowCoordinators;
-using CustomMenuPointers.MenuPointers;
+using CustomMenuPointers.Managers;
 using CustomMenuPointers.UI;
+using IPA.Logging;
 using Zenject;
 using SiraUtil;
-using IPA.Logging;
 
-
-namespace CustomMenuPointers.Installer
+namespace CustomMenuPointers.Installers
 {
-    internal class ModelSelectViewInstaller : Installer<Logger, ModelSelectViewInstaller>
+    internal class ModelSelectViewInstaller : Installer
     {
         private readonly Logger _logger;
-        internal ModelSelectViewInstaller(Logger logger)
+        private readonly PluginConfig _config;
+
+        internal ModelSelectViewInstaller(Logger logger, PluginConfig config)
         {
             _logger = logger;
+            _config = config;
         }
 
         public override void InstallBindings()
         {
             Container.BindLoggerAsSiraLogger(_logger);
-            Container.Bind<CustomMenuPointersController>().FromNewComponentAsViewController().AsSingle();
+            Container.BindInstance(_config);
             Container.Bind<UIFlowCoordinator>().FromNewComponentOnNewGameObject().AsSingle();
             //Container.Bind<MenuPointerSelectView>().FromNewComponentAsViewController().AsSingle();
             Container.Bind<CMPSettingsView>().FromNewComponentAsViewController().AsSingle();
