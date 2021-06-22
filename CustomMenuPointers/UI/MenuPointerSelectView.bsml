@@ -1,0 +1,15 @@
+<!--<bg xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='https://monkeymanboy.github.io/BSML-Docs/ https://raw.githubusercontent.com/monkeymanboy/BSML-Docs/gh-pages/BSMLSchema.xsd'>
+    <vertical background='round-rect-panel'>
+        <horizontal pref-height='2'/>
+        <page-button event-click='list#PageUp' direction='Up' />
+        <horizontal horizontal-fit='PreferredSize' vertical-fit='PreferredSize' spacing='2'>
+            <list id='list' expand-cell='true' select-cell='list-select' />
+        </horizontal>
+        <page-button event-click='list#PageDown' direction='Down' />
+        <horizontal horizontal-fit='PreferredSize' vertical-fit='PreferredSize' spacing='2'>
+            <button text='Reload' on-click='reload-btn-action' hover-hint='Reloads the selected model' pad='2' pad-top='3' />
+            <button text='Reload All' on-click='reload-all' hover-hint='Reloads all models' pad='2' pad-top='3' />
+            <button text='Delete' on-click='delete' hover-hint='This deletes a model!' pad='2' pad-top='3' />
+        </horizontal>
+    </vertical>
+</bg>-->

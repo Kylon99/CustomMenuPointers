@@ -1,21 +1,26 @@
 # ![IMG](CustomMenuPointers/Resources/CustomMenuPointers64.png) CustomMenuPointers
 
-* Early build:  You can use your currently selected Custom Saber in the menu!
+* This plugin lets you use the currently selected SaberFactory Saber as a Menu Pointer!
 * Eventually this mod will allow you to choose custom menu pointers for Beat Saber!
-* If you change your Custom Saber you can go to the Menu Pointer MOD Settings and hit Reload.
 
 ## Requirements
-This mod depends on the following mods.  Download them at [BeatMods](https://beatmods.com).
+This mod depends on the following mods.  Download them at [BeatMods](https://beatmods.com) or with ModAssistant!
 
-* BSIPA v3.13.7
-* BeatSaberMarkupLanguage v1.1.4
-* BS Utils v1.4.1
+* BSIPA v4.1.6
+* BeatSaberMarkupLanguage v1.5.3
+* SiraUtil 2.5.5
 
 ## Installation
 
 Drop the CustomMenuPointers.dll file into your Plugins folder under your BeatSaber folder.
 
 ## Changelog
+
+### 1.0.0
+* Updated for 1.16.1
+* Added support for Saber Factory
+* Removed support for Custom Saber (Sorry folks, SF has better support from its creator!)
+* Full rewrite from BS_Utils to SiraUtil (Thanks @rithik-b, @PulseLane, @rugtveit and @ToniMacaroni for your help with Sira conversion!)
 
 ### 0.2.0
 * Updated to support Beat Saber 1.9.0 and the new BSIPA4

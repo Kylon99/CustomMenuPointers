@@ -1,43 +1,30 @@
-﻿using BS_Utils.Utilities;
-using CustomMenuPointers.UI;
+﻿using CustomMenuPointers.Configuration;
+using CustomMenuPointers.Installers;
 using IPA;
-using UnityEngine;
+using SiraUtil.Zenject;
+using IPALogger = IPA.Logging.Logger;
+using IPA.Config.Stores;
+using Config = IPA.Config.Config;
 
 namespace CustomMenuPointers
 {
-    [Plugin(RuntimeOptions.SingleStartInit)]
+    [Plugin(RuntimeOptions.DynamicInit)]
     public class Plugin
     {
-        public const string AssemblyName = "CustomMenuPointers";
-        private CustomMenuPointersUI customMenuPointersUI;
-
-        [OnStart]
-        public void OnStart()
+        [Init]
+        public void Init(IPALogger logger, Zenjector zenjector, Config config)
         {
-            PersistentSingleton<CustomSabersMod>.TouchInstance();
-            PersistentSingleton<ConfigOptions>.TouchInstance();
-            PersistentSingleton<CustomMenuPointers>.TouchInstance();
-
-            if (this.customMenuPointersUI == null) this.customMenuPointersUI = new GameObject(nameof(CustomMenuPointersUI)).AddComponent<CustomMenuPointersUI>();
-
-            BSEvents.menuSceneLoadedFresh += this.OnMenuSceneLoadedFresh;
-            BSEvents.menuSceneLoaded += this.OnMenuSceneLoaded;
-            BSEvents.gameSceneLoaded += this.OnGameSceneLoaded;
+            zenjector.OnMenu<ModelSelectViewInstaller>().WithParameters(logger, config.Generated<PluginConfig>());
         }
 
-        private void OnMenuSceneLoadedFresh()
+        [OnEnable]
+        public void OnEnable()
         {
-            CustomMenuPointers.instance.ShowMenuPointers();
         }
 
-        private void OnMenuSceneLoaded()
+        [OnDisable]
+        public void OnDisable()
         {
-            CustomMenuPointers.instance.ShowMenuPointers();
-        }
-
-        private void OnGameSceneLoaded()
-        {
-            CustomMenuPointers.instance.ShowMenuPointers(false);
         }
     }
 }
