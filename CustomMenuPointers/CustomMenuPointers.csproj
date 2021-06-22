@@ -4,7 +4,7 @@
         <TargetFramework>net472</TargetFramework>
         <OutputType>Library</OutputType>
         <LangVersion>8</LangVersion>
-        <Nullable>false</Nullable>
+        <Nullable>disable</Nullable>
         <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
         <LocalRefsDir Condition="Exists('..\Refs')">..\Refs</LocalRefsDir>
         <BeatSaberDir>$(LocalRefsDir)</BeatSaberDir>
@@ -87,14 +87,14 @@
     </ItemGroup>
 
     <ItemGroup>
-        <None Include="Directory.Build.props" Condition="Exists('Directory.Build.props')"/>
-        <None Include="Directory.Build.targets" Condition="Exists('Directory.Build.targets')"/>
-        <None Include="CustomMenuPointers.csproj.user" Condition="Exists('CustomMenuPointers.csproj.user')"/>
+        <None Include="Directory.Build.props" Condition="Exists('Directory.Build.props')" />
+        <None Include="Directory.Build.targets" Condition="Exists('Directory.Build.targets')" />
+        <None Include="CustomMenuPointers.csproj.user" Condition="Exists('CustomMenuPointers.csproj.user')" />
     </ItemGroup>
 
     <ItemGroup>
-        <EmbeddedResource Include="manifest.json"/>
-        <EmbeddedResource Include="UI\**.bsml"/>
+        <EmbeddedResource Include="manifest.json" />
+        <EmbeddedResource Include="UI\*.bsml" />
     </ItemGroup>
 
     <ItemGroup>
