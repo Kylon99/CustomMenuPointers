@@ -10,6 +10,6 @@
     "BSIPA": "^4.1.6",
     "BeatSaberMarkupLanguage": "^1.5.3",
     "SiraUtil": "^2.5.5",
-    "SaberFactory":  "^2.3.0" 
+    "SaberFactory":  "^2.3.3" 
   }
 }

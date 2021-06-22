@@ -65,7 +65,7 @@
     <Reference Include="Main, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\Main.dll</HintPath>
     </Reference>
-    <Reference Include="SaberFactory, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null">
+    <Reference Include="SaberFactory, Version=2.3.3.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>$(BeatSaberDir)\Plugins\SaberFactory.dll</HintPath>
     </Reference>
     <Reference Include="SiraUtil, Version=2.5.5.0, Culture=neutral, PublicKeyToken=null">
@@ -154,6 +154,8 @@
     <Content Include="UI\CMPSettingsView.bsml" />
     <Content Include="UI\MenuPointerSelectView.bsml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Resources" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
