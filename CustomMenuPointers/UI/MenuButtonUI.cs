@@ -1,7 +1,7 @@
 ﻿using BeatSaberMarkupLanguage;
 using BeatSaberMarkupLanguage.MenuButtons;
 using System;
-using CustomMenuPointers.FlowCoordinators;
+using CustomMenuPointers.UI.FlowCoordinators;
 using Zenject;
 
 namespace CustomMenuPointers.UI

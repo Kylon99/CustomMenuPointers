@@ -1,5 +1,5 @@
 ﻿using CustomMenuPointers.Configuration;
-using CustomMenuPointers.FlowCoordinators;
+using CustomMenuPointers.UI.FlowCoordinators;
 using CustomMenuPointers.Managers;
 using CustomMenuPointers.UI;
 using IPA.Logging;

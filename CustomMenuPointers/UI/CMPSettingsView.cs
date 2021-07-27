@@ -1,4 +1,5 @@
-﻿using SiraUtil.Tools;
+﻿using System.Text;
+using SiraUtil.Tools;
 using BeatSaberMarkupLanguage.Attributes;
 using BeatSaberMarkupLanguage.ViewControllers;
 using CustomMenuPointers.Configuration;
@@ -48,6 +49,12 @@ namespace CustomMenuPointers.UI
         private void Reload()
         {
             _cmpManager.ReloadModel();
+        }
+
+        [UIAction("removeMesh")]
+        private void RemoveMesh()
+        {
+            _cmpManager?.ToggleCustomMenuPointers(false);
         }
     }
 }

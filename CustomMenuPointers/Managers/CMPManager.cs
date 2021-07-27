@@ -47,6 +47,12 @@ namespace CustomMenuPointers.Managers
             else DestroySaber();
         }
         
+        public void DestroyMeshOnly(bool visible)
+        { 
+            ToggleHandle(_menuPlayerController.leftController, !visible);
+            ToggleHandle(_menuPlayerController.rightController, !visible);
+        }
+        
         public async Task CreateSaberColorScheme()
         {
             if (_leftSaber != null && _rightSaber != null) return;
