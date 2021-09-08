@@ -11,7 +11,7 @@
     <horizontal horizontal-fit='PreferredSize' vertical-fit='PreferredSize' pad='2'>
         <vertical>
             <primary-button text='reload' on-click='reload' pad-left='75' pad-top='3' />
-            <primary-button text='Remove Mesh' on-click="removeMesh" pad-left='75' pad-top='3' />
+            <!--<primary-button text='Remove Mesh' on-click="removeMesh" pad-left='75' pad-top='3' />-->
         </vertical>
     </horizontal>
 </bg>
