@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using CustomMenuPointers.Configuration;
 using SaberFactory;
 using SaberFactory.Instances;
+using SiraUtil.Tools.FPFC;
 using UnityEngine;
 using Zenject;
 using Object = UnityEngine.Object;
@@ -20,17 +21,19 @@ namespace CustomMenuPointers.Managers
         private ColorScheme _colorScheme;
         private SaberInstance _leftSaber;
         private SaberInstance _rightSaber;
+        private IFPFCSettings _fpfc;
 
         public CMPManager(
             MenuSaberProvider menuSaberProvider,
             PlayerDataModel playerDataModel,
             MenuPlayerController menuPlayerController,
-            PluginConfig config)
+            PluginConfig config, IFPFCSettings fpfc)
         {
             _menuSaberProvider = menuSaberProvider;
             _playerDataModel = playerDataModel;
             _menuPlayerController = menuPlayerController;
             _config = config;
+            _fpfc = fpfc;
         }
 
         public async void Initialize()
@@ -56,10 +59,13 @@ namespace CustomMenuPointers.Managers
         public async Task CreateSaberColorScheme()
         {
             if (_leftSaber != null && _rightSaber != null) return;
-            _leftSaber = await _menuSaberProvider.CreateSaber(_menuPlayerController.leftController.transform, SaberType.SaberA, _colorScheme.saberAColor, true);
-            _rightSaber = await _menuSaberProvider.CreateSaber(_menuPlayerController.rightController.transform, SaberType.SaberB, _colorScheme.saberBColor, true);
-            DestroyCollider(_leftSaber.GameObject);
-            DestroyCollider(_rightSaber.GameObject);
+            if (_fpfc.Enabled) return;
+            {
+                _leftSaber = await _menuSaberProvider.CreateSaber(_menuPlayerController.leftController.transform, SaberType.SaberA, _colorScheme.saberAColor, true);
+                _rightSaber = await _menuSaberProvider.CreateSaber(_menuPlayerController.rightController.transform, SaberType.SaberB, _colorScheme.saberBColor, true);
+                DestroyCollider(_leftSaber.GameObject);
+                DestroyCollider(_rightSaber.GameObject);
+            }
         }
 
         private void DestroyCollider(GameObject gameObject)

@@ -1,33 +1,29 @@
-﻿using CustomMenuPointers.Configuration;
-using CustomMenuPointers.UI.FlowCoordinators;
+﻿using CustomMenuPointers.UI.FlowCoordinators;
 using CustomMenuPointers.Managers;
 using CustomMenuPointers.UI;
 using IPA.Logging;
+using SiraUtil.Tools.FPFC;
 using Zenject;
-using SiraUtil;
 
 namespace CustomMenuPointers.Installers
 {
-    internal class ModelSelectViewInstaller : Installer
+    internal class CMPMenuInstaller : Installer
     {
-        private readonly Logger _logger;
-        private readonly PluginConfig _config;
+        internal IFPFCSettings _fpfc;
 
-        internal ModelSelectViewInstaller(Logger logger, PluginConfig config)
+        internal CMPMenuInstaller(IFPFCSettings fpfc)
         {
-            _logger = logger;
-            _config = config;
+            _fpfc = fpfc;
         }
 
         public override void InstallBindings()
         {
-            Container.BindLoggerAsSiraLogger(_logger);
-            Container.BindInstance(_config);
             Container.Bind<UIFlowCoordinator>().FromNewComponentOnNewGameObject().AsSingle();
             //Container.Bind<MenuPointerSelectView>().FromNewComponentAsViewController().AsSingle();
             Container.Bind<CMPSettingsView>().FromNewComponentAsViewController().AsSingle();
             Container.BindInterfacesAndSelfTo<CMPManager>().AsSingle();
             Container.BindInterfacesTo<MenuButtonUI>().AsSingle();
+            
         }
     }
 }

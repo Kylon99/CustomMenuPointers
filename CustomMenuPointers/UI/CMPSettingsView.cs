@@ -5,6 +5,7 @@ using BeatSaberMarkupLanguage.ViewControllers;
 using CustomMenuPointers.Configuration;
 using CustomMenuPointers.Managers;
 using CustomMenuPointers.UI;
+using SiraUtil.Logging;
 using Zenject;
 
 namespace CustomMenuPointers.UI

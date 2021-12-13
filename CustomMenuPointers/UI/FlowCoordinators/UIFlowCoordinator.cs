@@ -2,6 +2,7 @@
 using BeatSaberMarkupLanguage;
 using CustomMenuPointers.UI;
 using HMUI;
+using SiraUtil.Logging;
 using SiraUtil.Tools;
 using Zenject;
 
