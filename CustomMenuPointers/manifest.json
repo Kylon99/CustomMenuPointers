@@ -3,13 +3,13 @@
   "id": "CustomMenuPointers",
   "name": "CustomMenuPointers",
   "author": "Raine",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "This mod allows you to use saber and eventually menupointer files in the menu!",
   "gameVersion": "1.19.0",
   "dependsOn": {
     "BSIPA": "^4.2.0",
     "BeatSaberMarkupLanguage": "^1.5.12",
-    "SiraUtil": "^3.0.0-rc11",
+    "SiraUtil": "^3.0.0",
     "SaberFactory":  "^2.4.0" 
   }
 }
