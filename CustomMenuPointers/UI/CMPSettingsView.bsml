@@ -4,14 +4,9 @@
         <!--<checkbox text='Use SF Saber as Pointer' value='sf-pointer' pad='5' />-->
         <!--<slider-setting text='Pointer Thickness' />
         <horizontal horizontal-fit='PreferredSize' vertical-fit='PreferredSize' spacing='2' /> -->
-        <text color='red' italics='true' text='This is not the final UI.' />
-        <text color='red' italics='true' text='This UI will change when CustomMenuPointers support Menu Pointer files.' />
+        <horizontal pad-top='3'>
+            <text text='Reload current pointer' font-size='5' />
+            <primary-button text='reload' on-click='reload' pad-left='45' />
+        </horizontal>
     </vertical>
-    <horizontal spacing='50'/>
-    <horizontal horizontal-fit='PreferredSize' vertical-fit='PreferredSize' pad='2'>
-        <vertical>
-            <primary-button text='reload' on-click='reload' pad-left='75' pad-top='3' />
-            <!--<primary-button text='Remove Mesh' on-click="removeMesh" pad-left='75' pad-top='3' />-->
-        </vertical>
-    </horizontal>
 </bg>

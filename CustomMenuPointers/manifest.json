@@ -7,9 +7,9 @@
   "description": "This mod allows you to use saber and eventually menupointer files in the menu!",
   "gameVersion": "1.19.0",
   "dependsOn": {
-    "BSIPA": "^4.2.0",
-    "BeatSaberMarkupLanguage": "^1.5.12",
-    "SiraUtil": "^3.0.0",
+    "BSIPA": "^4.2.1",
+    "BeatSaberMarkupLanguage": "^1.6.0",
+    "SiraUtil": "^3.0.2",
     "SaberFactory":  "^2.4.0" 
   }
 }
