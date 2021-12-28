@@ -15,27 +15,11 @@ This mod depends on the following mods.  Download them at [BeatMods](https://bea
 Drop the CustomMenuPointers.dll file into your Plugins folder under your BeatSaber folder.
 
 ## Changelog
-
-### 1.0.0
-* Updated for 1.16.1
-* Added support for Saber Factory
-* Removed support for Custom Saber (Sorry folks, SF has better support from its creator!)
-* Full rewrite from BS_Utils to SiraUtil (Thanks @rithik-b, @PulseLane, @rugtveit and @ToniMacaroni for your help with Sira conversion!)
-
-### 0.2.0
-* Updated to support Beat Saber 1.9.0 and the new BSIPA4
-
-### 0.1.1
-* Updated to support Beat Saber 1.7.0
-* Updated to support Custom Sabers 4.0.1
-
-### 0.1.0
-* Initial checkin
-* Supports using Custom Sabers as the Menu Pointer
+See [releases](https://github.com/dawnvt/CustomMenuPointers/releases/latest) for the latest changelog!
 
 ## Author
 * Kylon99 - Initial main modder and creator of the mod - Thank you!
-* Raine Aya (DawnVT) - New maintainer of the mod
+* Raine (DawnVT) - New maintainer of the mod
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
