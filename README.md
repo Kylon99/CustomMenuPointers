@@ -13,7 +13,7 @@ Drop the CustomMenuPointers.dll file into your Plugins folder under your BeatSab
 
 ## Author
 * Kylon99 - Initial main modder and creator of the mod - Thank you!
-* Raine (DawnVT) - New maintainer of the mod
+* Raine - New maintainer of the mod
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
