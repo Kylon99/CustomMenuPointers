@@ -21,7 +21,7 @@ namespace CustomMenuPointers.Managers
         private ColorScheme _colorScheme;
         private SaberInstance _leftSaber;
         private SaberInstance _rightSaber;
-        private IFPFCSettings _fpfc;
+        private readonly IFPFCSettings _fpfc;
 
         public CMPManager(
             MenuSaberProvider menuSaberProvider,
@@ -51,7 +51,7 @@ namespace CustomMenuPointers.Managers
         }
         
         public void DestroyMeshOnly(bool visible)
-        { 
+        {
             ToggleHandle(_menuPlayerController.leftController, !visible);
             ToggleHandle(_menuPlayerController.rightController, !visible);
         }
@@ -78,11 +78,11 @@ namespace CustomMenuPointers.Managers
 
         private void DestroySaber()
         {
-            if(_leftSaber == null || _rightSaber == null) return;
-            _leftSaber.Destroy();
-            _rightSaber.Destroy();
-            _leftSaber = null;
-            _rightSaber = null;
+            if (_leftSaber == null || _rightSaber == null) return;
+                _leftSaber.Destroy();
+                _rightSaber.Destroy();
+                _leftSaber = null;
+                _rightSaber = null;
         }
 
         private void ToggleHandles(bool visible)
@@ -95,13 +95,13 @@ namespace CustomMenuPointers.Managers
         {
             var handle = controller.transform.Find("MenuHandle");
             if (handle == null) return;
-            handle.gameObject.SetActive(visible);
+                handle.gameObject.SetActive(visible);
         }
 
         public async void ReloadModel()
         {
             if (!_config.CmpEnabled) return;
-            DestroySaber();
+                DestroySaber();
             await CreateSaberColorScheme();
         }
 
